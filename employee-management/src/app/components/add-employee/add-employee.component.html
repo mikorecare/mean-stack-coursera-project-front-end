@@ -1,5 +1,5 @@
 <div class="bg-dark p-5">
-    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
       <div class="mb-3 row">
         <div class="col">
           <label for="firstName" class="form-label text-light">First Name</label>
@@ -54,9 +54,9 @@
       <div class="mb-3">
         <label for="role" class="form-label text-light">Role</label>
         <select class="form-select" id="role" name="role" [(ngModel)]="model.role" #role="ngModel">
-          <option value="entry">Entry-Level</option>
-          <option value="junior">Junior Developer</option>
-          <option value="senior">Senior Developer</option>
+          <option value="Entry-Level">Entry-Level</option>
+          <option value="Junior-Developer">Junior Developer</option>
+          <option value="Senior-Developer">Senior Developer</option>
         </select>
       </div>
       <div class="mb-3">

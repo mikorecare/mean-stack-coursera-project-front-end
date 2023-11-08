@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/services/api-service.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { ApiService } from 'src/app/services/api-service.service';
 })
 export class AddEmployeeComponent {
   model: any = {};
+  employeeForm: any = {}; 
 
   constructor(private api:ApiService){}
 
@@ -15,8 +17,13 @@ export class AddEmployeeComponent {
 
   }
 
-  onSubmit(){
-    
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      // Access form values via ngModel bindings
+    console.log(this.model)
+  
+      // You can perform additional logic here
+    }
   }
   
 
