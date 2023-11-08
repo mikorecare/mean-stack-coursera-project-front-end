@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IEmployee, IList } from 'src/app/moduels/interface';
 import { ApiService } from 'src/app/services/api-service.service';
 @Component({

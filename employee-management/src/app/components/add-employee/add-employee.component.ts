@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ApiService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-employee.component.scss']
 })
 export class AddEmployeeComponent {
+  model: any = {};
+
+  constructor(private api:ApiService){}
+
+  ngOnInit(){
+
+  }
+
+  onSubmit(){
+    
+  }
+  
+
 
 }

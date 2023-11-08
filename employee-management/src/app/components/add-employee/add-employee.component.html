@@ -1,1 +1,64 @@
-<p>add-employee works!</p>
+<div class="bg-dark p-4">
+    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="mb-3 row">
+        <div class="col">
+          <label for="firstName" class="form-label text-light">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            placeholder="Enter first name"
+            required
+            pattern="[A-Za-z]+"
+            [(ngModel)]="model.firstName"
+            #firstName="ngModel"
+          />
+          <div class="invalid-feedback text-light" *ngIf="firstName.invalid && firstName.touched">
+            Please enter a valid first name.
+          </div>
+        </div>
+        <div class="col">
+          <label for="lastName" class="form-label text-light">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="Enter last name"
+            required
+            pattern="[A-Za-z]+"
+            [(ngModel)]="model.lastName"
+            #lastName="ngModel"
+          />
+          <div class="invalid-feedback text-light" *ngIf="lastName.invalid && lastName.touched">
+            Please enter a valid last name.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label text-light">Age</label>
+        <input
+          type="text"
+          class="form-control"
+          id="age"
+          name="age"
+          placeholder="Enter age"
+          required
+          pattern="[0-9]+"
+          [(ngModel)]="model.age"
+          #age="ngModel"
+        />
+        <div class="invalid-feedback text-light" *ngIf="age.invalid && age.touched">Please enter a valid age.</div>
+      </div>
+      <div class="mb-3">
+        <label for="role" class="form-label text-light">Role</label>
+        <select class="form-select" id="role" name="role" [(ngModel)]="model.role" #role="ngModel">
+          <option value="entry">Entry-Level</option>
+          <option value="junior">Junior Developer</option>
+          <option value="senior">Senior Developer</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+    </form>
+  </div>
