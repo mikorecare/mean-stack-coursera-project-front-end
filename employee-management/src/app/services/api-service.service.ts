@@ -25,10 +25,8 @@ export class ApiService {
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
-    return throwError(()=>{
-      error.error ? { ...error.error, statusText: error.statusText } : error
-    }  
-    );
+    const errorMessage = error.error ? { ...error.error, statusText: error.statusText } : error;
+    return throwError(()=>errorMessage);
   }
 
   public get(url: string): Promise<any> {

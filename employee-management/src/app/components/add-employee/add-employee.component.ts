@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/services/api-service.service';
@@ -8,6 +9,7 @@ import { ApiService } from 'src/app/services/api-service.service';
   styleUrls: ['./add-employee.component.scss']
 })
 export class AddEmployeeComponent {
+  isSaving:boolean = false;
   model: any = {};
   employeeForm: any = {}; 
 
@@ -17,13 +19,22 @@ export class AddEmployeeComponent {
 
   }
 
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
+    this.isSaving = true;
     if (form.valid) {
-      // Access form values via ngModel bindings
-    console.log(this.model)
-  
-      // You can perform additional logic here
+    const post =  await this.api.post("/employees",this.model)
+      .then((data:any)=>{
+        console.log("Added to database", data)
+      })
+      .catch((err)=>{
+        console.log("Error: ",err.statusText)
+      })
+      .finally(()=>{
+        this.isSaving = false;
+      });
+     
     }
+    
   }
   
 
