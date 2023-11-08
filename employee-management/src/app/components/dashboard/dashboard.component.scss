@@ -1,0 +1,10 @@
+.container-fluid{
+    padding-block: 20px;
+    .container{
+        padding-block: 20px;
+        .header{
+            display: flex;
+            gap:5px
+        }
+    }
+}
