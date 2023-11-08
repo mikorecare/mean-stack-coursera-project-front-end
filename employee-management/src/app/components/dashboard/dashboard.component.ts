@@ -28,4 +28,11 @@ export class DashboardComponent {
     }).finally(()=>this.isLoading=false);
   }
 
+  setSelectedEmployee(index:number){
+    
+    this.selectedEmployee = this.employees[index];
+    console.log(this.selectedEmployee)
+    
+  }
+
 }
