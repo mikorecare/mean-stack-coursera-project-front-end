@@ -38,7 +38,7 @@
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <app-add-employee></app-add-employee>
+      <app-add-employee #childComponent (closeModal)="handleCloseModal()"></app-add-employee>
     </div>
   </div>
 </div>
