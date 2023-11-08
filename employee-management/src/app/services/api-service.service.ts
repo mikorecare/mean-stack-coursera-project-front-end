@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { environment as env } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiServiceService {
+export class ApiService {
 
   constructor(private http: HttpClient) { 
 
   }
   private setURL(url: string): string {
-    return env.API_URL + url;
+    return environment.API_URL + url;
   }
 
   private promiseResponse(res: Observable<any>): Promise<any> {

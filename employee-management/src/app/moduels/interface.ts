@@ -5,3 +5,8 @@ export interface IEmployee{
     age: number,
     position: string,
 }
+
+export interface IList{
+    list?:IEmployee[],
+    message?:string
+}

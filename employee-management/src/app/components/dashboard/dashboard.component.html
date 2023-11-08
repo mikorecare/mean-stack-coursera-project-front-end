@@ -1,7 +1,11 @@
-<div class="container-fluid bg-li">
+<div class="container-fluid" *ngIf="isLoading">
+    <h1>Loading...</h1>
+</div>
+
+<div class="container-fluid bg-li" *ngIf="!isLoading">
     <div class="container bg-dark">
         <div class="header float-end">
-            <button type="button" class="btn btn-outline-primary btn-sm">Add</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="getEmployees()">Add</button>
             <button type="button" class="btn btn-outline-secondary btn-sm">Edit</button>
             <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
         </div>
@@ -10,32 +14,18 @@
               <tr>
                 <th scope="col"></th> <!-- Empty column for the radio buttons -->
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Position</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><input type="radio" name="selectRadio" value="1"></td> <!-- Radio button in the first column -->
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-              </tr>
-              <tr>
-                <td><input type="radio" name="selectRadio" value="2"></td> <!-- Radio button in the first column -->
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-              </tr>
-              <tr>
-                <td><input type="radio" name="selectRadio" value="3"></td> <!-- Radio button in the first column -->
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>twitter</td>
+            <tbody >
+              <tr *ngFor="let employee of employees; let i = index">
+                <td><input type="radio" name="selectRadio" [value]="i"></td> <!-- Radio button in the first column -->
+                <th scope="row">{{i + 1}}</th>
+                <td>{{employee.name}}</td>
+                <td>{{employee.age}}</td>
+                <td>{{employee.role}}</td>
               </tr>
             </tbody>
           </table>
