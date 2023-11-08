@@ -5,9 +5,7 @@
 <div class="container-fluid bg-li" *ngIf="!isLoading">
     <div class="container bg-dark">
         <div class="header float-end">
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="getEmployees()">Add</button>
-            <button type="button" class="btn btn-outline-secondary btn-sm">Edit</button>
-            <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+            <button type="button" class="btn btn-outline-success">Add New Employee</button>
         </div>
         <table class="table table-striped table-dark">
             <thead>
@@ -17,15 +15,20 @@
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
                 <th scope="col">Position</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody >
-              <tr *ngFor="let employee of employees; let i = index">
-                <td><input type="radio" name="selectRadio" [value]="i" (click)="setSelectedEmployee(i)"></td> <!-- Radio button in the first column -->
+            <tbody>
+              <tr *ngFor="let employee of employees; let i = index" [ngClass]="{ 'selected': selectedIndex === i }">
+                <td><input type="radio" name="selectRadio" [value]="i" (click)="setSelectedEmployee(i)"></td>
                 <th scope="row">{{i + 1}}</th>
                 <td>{{employee.name}}</td>
                 <td>{{employee.age}}</td>
                 <td>{{employee.role}}</td>
+                <td>
+                  <button type="button" class="btn btn-outline-secondary btn-sm">Edit</button>&nbsp;
+                  <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+                </td>
               </tr>
             </tbody>
           </table>

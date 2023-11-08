@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/services/api-service.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  selectedIndex:number = 0;
   isLoading = false;
   employees:any[] = []
   selectedEmployee!: IEmployee;
@@ -29,10 +30,9 @@ export class DashboardComponent {
   }
 
   setSelectedEmployee(index:number){
-    
+    this.selectedIndex = index;
     this.selectedEmployee = this.employees[index];
-    console.log(this.selectedEmployee)
-    
+    console.log(this.selectedEmployee)  
   }
 
 }
