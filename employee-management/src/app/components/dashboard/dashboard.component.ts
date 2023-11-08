@@ -31,9 +31,9 @@ export class DashboardComponent {
     this.isLoading = true
     await this.api.get("/employees").then((data:any)=>{
       console.log(data)
-        this.employees = data;    
+      this.employees = data;    
     }).catch((error:any)=>{
-      console.log(error)
+      console.log("ERROR",error)
     }).finally(()=>this.isLoading=false);
   }
 
@@ -48,14 +48,13 @@ export class DashboardComponent {
   }
 
   handleCloseModal() {
+    this.getEmployees()
     const modal = document.getElementById('addModal');
     if (modal) {
       modal.style.display = 'none';
       $(".modal-backdrop").remove();
-  
-      // Remove the modal-open class from the body
       $("body").removeClass("modal-open");
-      this.router.navigate(['/home/dashboard'])
+      
 
     }
   }

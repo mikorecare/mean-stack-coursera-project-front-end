@@ -12,6 +12,7 @@ export class AddEmployeeComponent {
   isSaving:boolean = false;
   model: any = {};
   employeeForm: any = {}; 
+    
   @Output() closeModal = new EventEmitter<boolean>();
   isModalOpen = true;
 
@@ -23,22 +24,22 @@ export class AddEmployeeComponent {
   }
 
   async onSubmit(form: NgForm) {
-    this.isModalOpen = false; // Close the modal upon successful saving
-    this.closeModal.emit(true);
-    // if (form.valid) {
-    // const post =  await this.api.post("/employees",this.model)
-    //   .then((data:any)=>{
-    //     console.log("Added to database", data)
-    //     this.addModal.hide();
-    //   })
-    //   .catch((err)=>{
-    //     console.log("Error: ",err.statusText)
-    //   })
-    //   .finally(()=>{
-    //     this.isSaving = false;
-    //   });
+
+    if (form.valid) {
+await this.api.post("/employees",this.model)
+      .then((data:any)=>{
+        console.log("Added to database", data)
+        this.isModalOpen = false; // Close the modal upon successful saving
+        this.closeModal.emit(true);
+      })
+      .catch((err)=>{
+        console.log("Error: ",err.statusText)
+      })
+      .finally(()=>{
+        this.isSaving = false;
+      });
      
-    // }
+    }
   }
 
   cancel(){
