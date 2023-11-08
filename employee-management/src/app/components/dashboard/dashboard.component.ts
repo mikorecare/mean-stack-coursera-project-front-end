@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IEmployee, IList } from 'src/app/moduels/interface';
 import { ApiService } from 'src/app/services/api-service.service';
 @Component({
@@ -11,7 +12,9 @@ export class DashboardComponent {
   isLoading = false;
   employees:any[] = []
   selectedEmployee!: IEmployee;
-  constructor(private api:ApiService){}
+  constructor(private api:ApiService,
+    private router:Router
+    ){}
 
   ngOnInit(): void{
     this.getEmployees()
@@ -33,6 +36,10 @@ export class DashboardComponent {
     this.selectedIndex = index;
     this.selectedEmployee = this.employees[index];
     console.log(this.selectedEmployee)  
+  }
+
+  goTo(url:string){
+    this.router.navigate([`home/${url}`])
   }
 
 }

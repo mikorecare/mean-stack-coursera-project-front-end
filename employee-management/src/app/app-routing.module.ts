@@ -6,9 +6,21 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee.com
 
 const routes: Routes = [
   {
-    path:"**",
-    component:AddEmployeeComponent
+    path:"home",
+    component:HomeComponent,
+    children:[
+      {
+        path:"dashboard",
+        component:DashboardComponent
+      },
+      {
+        path:"add-employee",
+        component:AddEmployeeComponent
+      },
+      { path: "**", redirectTo: "dashboard", pathMatch: "full" },
+    ]
   },
+  { path: "**", redirectTo: "home", pathMatch: "full" },
 ];
 
 @NgModule({
