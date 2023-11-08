@@ -1,6 +1,9 @@
 <div class="bg-dark p-5">
     <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
       <div class="mb-3 row">
+            <h4 class="float-center text-light">Add Form</h4>
+      </div>
+      <div class="mb-3 row">
         <div class="col">
           <label for="firstName" class="form-label text-light">First Name</label>
           <input
@@ -59,7 +62,7 @@
           <option value="Senior-Developer">Senior Developer</option>
         </select>
       </div>
-      <div class="mb-3">
+      <div class="mb-4">
         <button type="submit" class="btn btn-primary float-end" [disabled]="!form.valid">Submit</button>
       </div>
     </form>
