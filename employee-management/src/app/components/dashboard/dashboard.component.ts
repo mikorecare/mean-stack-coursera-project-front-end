@@ -36,6 +36,20 @@ export class DashboardComponent {
     }).finally(()=>this.isLoading=false);
   }
 
+  async deleteEmployee(id:string){
+    this.isLoading = true;
+    await this.api.delete(`/employees/${id}`)
+    .then(()=>{
+      this.getEmployees();
+    })
+    .catch((err:any)=>{
+      console.log("ERROR",err)
+    })
+    .finally(()=>{
+      this.isLoading = false
+    })
+  } 
+
   setSelectedEmployee(index:number){
     if(index===-1){
       this.selectedEmployee = "";
@@ -55,4 +69,6 @@ export class DashboardComponent {
     $(".close").click();
     this.getEmployees()    
   }
+
+
 }

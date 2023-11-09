@@ -39,9 +39,9 @@ export class ApiService {
     );
   }
 
-  public patch(url: string, body: any = {}): Promise<any> {
+  public put(url: string, body: any = {}): Promise<any> {
     return this.promiseResponse(
-      this.http.patch(this.setURL(url), body)
+      this.http.put(this.setURL(url), body)
     );
   }
   public delete(url: string): Promise<any> {

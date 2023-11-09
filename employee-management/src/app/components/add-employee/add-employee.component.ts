@@ -35,7 +35,8 @@ export class AddEmployeeComponent {
   async onSubmit(form: NgForm) {
 
     if (form.valid) {
-      await this.api.post("/employees",this.model)
+      if(this.id===undefined || this.id===""){
+           await this.api.post("/employees",this.model)
       .then((data:any)=>{
         console.log("Added to database", data)
         this.closeModal.emit(true);
@@ -46,6 +47,22 @@ export class AddEmployeeComponent {
       .finally(()=>{
         this.isSaving = false;
       });
+      }
+      else{
+        await this.api.put(`/employees/${this.id}`,this.model)
+        .then((data:any)=>{
+          console.log("Added to database", data)
+          this.closeModal.emit(true);
+        })
+        .catch((err)=>{
+          console.log("Error: ",err.statusText)
+        })
+        .finally(()=>{
+          this.isSaving = false;
+        });
+
+      }
+   
      
     }
   }
