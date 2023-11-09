@@ -27,7 +27,7 @@
                 
                 <tr *ngFor="let employee of employees; let i = index">
                   <th scope="row">{{i + 1}}</th>
-                  <td>{{employee.firstName}} {{employee.lastName}}</td>
+                  <td>{{employee.firstName | titlecase}} {{employee.lastName | titlecase}}</td>
                   <td>{{employee.age}}</td>
                   <td>{{employee.role}}</td>
                   <td>
