@@ -1,7 +1,7 @@
 <div class="bg-dark p-5">
     <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
       <div class="mb-3 row">
-            <h4 class="float-center text-light">Add Form</h4>
+            <h4 class="float-center text-light">{{id!==undefined || id!=="" ? "Edit" : "Add"}} Form</h4>
       </div>
       <div class="mb-3 row">
         <div class="col">
@@ -63,8 +63,8 @@
         </select>
       </div>
       <div class="mb-4">
-        <button class="btn btn-outline-secondary float-end" (click)="cancel()">Cancel</button>
-        $nbsp;
+        <button type="button" class="btn btn-outline-secondary float-end" (click)="cancel()">Cancel</button>
+        &nbsp;
         <button type="submit" class="btn btn-primary float-end" [disabled]="!form.valid">Submit</button>
       </div>
     </form>

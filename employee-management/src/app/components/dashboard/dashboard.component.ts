@@ -3,18 +3,19 @@ import { Router } from '@angular/router';
 import { IEmployee, IList } from 'src/app/moduels/interface';
 import { ApiService } from 'src/app/services/api-service.service';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
-import * as $ from 'jquery';
 import 'bootstrap';
+declare var $ : any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  
   selectedIndex:number = 0;
   isLoading = false;
   employees:any[] = []
-  selectedEmployee!: IEmployee;
+  selectedEmployee!: string;
   @ViewChild('childComponent') childComponent!: AddEmployeeComponent;
 
   constructor(private api:ApiService,
@@ -22,10 +23,8 @@ export class DashboardComponent {
     ){}
 
   ngOnInit(): void{
-    this.getEmployees()
+    this.handleCloseModal()
   }
-
-  
 
   async getEmployees(){
     this.isLoading = true
@@ -38,9 +37,14 @@ export class DashboardComponent {
   }
 
   setSelectedEmployee(index:number){
-    this.selectedIndex = index;
-    this.selectedEmployee = this.employees[index];
-    console.log(this.selectedEmployee)  
+    if(index===-1){
+      this.selectedEmployee = "";
+    }
+    else{
+      this.selectedIndex = index;
+      this.selectedEmployee = this.employees[index]._id;
+    }
+ 
   }
 
   goTo(url:string){
@@ -48,14 +52,7 @@ export class DashboardComponent {
   }
 
   handleCloseModal() {
-    this.getEmployees()
-    const modal = document.getElementById('addModal');
-    if (modal) {
-      modal.style.display = 'none';
-      $(".modal-backdrop").remove();
-      $("body").removeClass("modal-open");
-      
-
-    }
+    $(".close").click();
+    this.getEmployees()    
   }
 }
