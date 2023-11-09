@@ -11,7 +11,7 @@
 - ... platform-browser, platform-browser-dynamic, router
 
 ## Package                         Version
----------------------------------------------------------
+
 - @angular-devkit/architect       0.1602.9
 - @angular-devkit/build-angular   16.2.9
 - @angular-devkit/core            16.2.9
