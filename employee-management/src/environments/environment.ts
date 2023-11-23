@@ -7,7 +7,7 @@
  
 
   export const environment = {
-    production: false,
+    production: true,
     ASSET: "../../../assets/",
     API_URL: " https://recare-miko-server.onrender.com/api/v1",
   };
